@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidFrameKotlin</string>
+    <string name="loading">加载中，请稍候…</string>
+    <string name="perm_tip">
+        当前应用缺少必要权限。\n请点击"设置"-"权限"-打开所需权限。\n最后点击两次后退按钮，即可返回。
+    </string>
+    <string name="ask_again">请给予应用必要权限，让程序可正常工作。</string>
+    <string name="ask_location">程序需要定位权限，让程序可以正常运行。</string>
+    <string name="cancel">取消</string>
+    <string name="setting">设置</string>
+</resources>
