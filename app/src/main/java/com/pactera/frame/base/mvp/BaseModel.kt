@@ -9,10 +9,6 @@ import com.pactera.frame.base.http.HttpUtils
  * Desc: BaseModel
  */
 open class BaseModel constructor(protected var context: Context) {
-    private var httpUtils: HttpUtils? = null
-
-    init {
-        httpUtils = HttpUtils.instance
-    }
+    protected var httpUtils: HttpUtils = HttpUtils.instance
 
 }

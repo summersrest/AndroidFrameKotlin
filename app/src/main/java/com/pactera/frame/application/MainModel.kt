@@ -11,8 +11,14 @@ import com.pactera.frame.base.mvp.BaseModel
  * Desc:
  */
 class MainModel(context: Context) : BaseModel(context) {
-    fun getRequest(jsonCallback: JsonCallback<String>) {
-        val url = "http://10.113.6.145:8090/production_ms_scgl_war_exploded/employee/get_data"
-        HttpUtils.instance.getRequest(url, jsonCallback, context)
+    fun getRequest(jsonCallback: JsonCallback<MutableList<UserBean>>) {
+        val url = "http://192.168.0.104:8090/user/selectList"
+        httpUtils.getRequest(url, jsonCallback, context)
+    }
+
+    fun getDetail(jsonCallback: JsonCallback<UserBean>) {
+        var url = "http://192.168.0.104:8090/user/getById"
+        httpUtils.setParameter("id", "1")
+        httpUtils.getRequest(url, jsonCallback, context)
     }
 }

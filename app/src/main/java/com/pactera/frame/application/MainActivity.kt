@@ -19,6 +19,8 @@ class MainActivity : BaseMvpActivity<ActivityMainBinding, MainPresenter>(), Main
         viewBinding.tvText.text = "我是测试TextView"
 
         presenter.getRequest()
+
+        presenter.getDetail()
     }
 
 

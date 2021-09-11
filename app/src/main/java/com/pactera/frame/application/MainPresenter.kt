@@ -1,8 +1,10 @@
 package com.pactera.frame.application
 
 import android.content.Context
+import com.alibaba.fastjson.JSON
 import com.pactera.frame.base.http.JsonCallback
 import com.pactera.frame.base.mvp.BasePresenter
+import com.pactera.frame.base.utils.L
 
 /**
  * @author liujiang
@@ -16,9 +18,23 @@ class MainPresenter(mainView: MainView, context: Context) : BasePresenter<MainMo
     }
 
     fun getRequest() {
-        model.getRequest(object : JsonCallback<String>() {
-            override fun onSuccess(t: String) {
+        model.getRequest(object : JsonCallback<MutableList<UserBean>>() {
+            override fun onSuccess(t: MutableList<UserBean>) {
+                for (userBean : UserBean in t) {
+                    L.showD(userBean.name)
+                }
+            }
 
+            override fun onError(msg: String) {
+            }
+
+        })
+    }
+
+    fun getDetail() {
+        model.getDetail(object  : JsonCallback<UserBean>() {
+            override fun onSuccess(t: UserBean) {
+                L.showD(JSON.toJSONString(t))
             }
 
             override fun onError(msg: String) {

@@ -19,19 +19,23 @@ abstract class JsonCallback<T> : AbsCallback<T>() {
         val content = response?.body()?.string()
         val pojo: BasePojo<T>? = JSON.parseObject(content, object : TypeReference<BasePojo<T>>() {})
         response?.close()
-        if (pojo?.code == 200) {
-            if (type === String::class.java || type === Int::class.java || type === Boolean::class.java || type === Double::class.java || type === Float::class.java) {
-                return pojo.result
+        when (pojo?.success) {
+            true -> {
+                if (type === String::class.java || type === Int::class.java || type === Boolean::class.java || type === Double::class.java || type === Float::class.java) {
+                    return pojo.result
+                }
+                return try {
+                    JSON.parseObject(pojo.result.toString(), type)
+                } catch (e : java.lang.Exception) {
+                    pojo.result
+                }
             }
-            return try {
-                JSON.parseObject(pojo.result.toString(), type)
-            } catch (e : java.lang.Exception) {
-                pojo.result
+            false -> {
+                throw Exception(pojo.error)
             }
-        } else if (pojo?.code != 200) {
-            throw Exception(pojo?.message)
-        } else {
-            throw Exception("服务的接口错误")
+            else -> {
+                throw Exception("服务的接口错误")
+            }
         }
     }
 
