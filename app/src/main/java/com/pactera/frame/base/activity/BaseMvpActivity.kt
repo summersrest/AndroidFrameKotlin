@@ -3,6 +3,7 @@ package com.pactera.frame.base.activity
 import android.os.Bundle
 import androidx.viewbinding.ViewBinding
 import com.pactera.frame.R
+import com.pactera.frame.base.http.HttpUtils
 import com.pactera.frame.base.mvp.BasePresenter
 import com.pactera.frame.base.mvp.BaseView
 import com.pactera.frame.base.utils.ToastUtils
@@ -25,7 +26,7 @@ abstract class BaseMvpActivity<V : ViewBinding, P : BasePresenter<*, *>> : BaseA
      * @author liujiang
      * Desc: 获取MultipleStatusView
      */
-    protected fun getMultipleStatusView(): MultipleStatusView? {
+    open fun getMultipleStatusView(): MultipleStatusView? {
         return null
     }
 
@@ -107,5 +108,13 @@ abstract class BaseMvpActivity<V : ViewBinding, P : BasePresenter<*, *>> : BaseA
      */
     override fun showEmpty() {
         getMultipleStatusView()?.showEmpty()
+    }
+
+    /**
+     * 取消网络请求
+     */
+    override fun onDestroy() {
+        super.onDestroy()
+        HttpUtils.instance.cancelTag(context)
     }
 }

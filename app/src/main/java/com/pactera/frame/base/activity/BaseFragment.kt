@@ -27,11 +27,11 @@ abstract class BaseFragment<V : ViewBinding> : Fragment(), View.OnClickListener 
 
     protected var activity: AppCompatActivity? = null
 
-    protected var viewBinding: V? = null
+    protected lateinit var viewBinding: V
 
     protected abstract fun initViewBinding(): V
 
-    protected abstract fun initView(savedInstanceState: Bundle)
+    protected abstract fun initView()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -47,12 +47,12 @@ abstract class BaseFragment<V : ViewBinding> : Fragment(), View.OnClickListener 
 //        }
 
         viewBinding = initViewBinding()
-        return viewBinding?.root
+        return viewBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView(savedInstanceState!!)
+        initView()
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

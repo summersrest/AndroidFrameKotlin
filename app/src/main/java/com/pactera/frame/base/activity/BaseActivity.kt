@@ -33,9 +33,9 @@ import java.lang.reflect.Type
 abstract class BaseActivity<V : ViewBinding> : PermissionActivity(), View.OnClickListener {
     private var loadDialog: LoadingDialog? = null
 
-    protected var activity: AppCompatActivity? = null
+    protected lateinit var activity: AppCompatActivity
 
-    protected var context: Context? = null
+    protected lateinit var context: Context
 
     protected lateinit var viewBinding: V
 
@@ -54,7 +54,7 @@ abstract class BaseActivity<V : ViewBinding> : PermissionActivity(), View.OnClic
 //        }
 
         viewBinding = initViewBinding()
-        setContentView(viewBinding?.root)
+        setContentView(viewBinding.root)
 
         context = this
         activity = this

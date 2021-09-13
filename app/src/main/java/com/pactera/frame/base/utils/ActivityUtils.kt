@@ -8,7 +8,7 @@ import java.io.Serializable
  * @author liujiang
  * Desc: Activity工具类
  */
-class ActivityUtils {
+object ActivityUtils {
     /**
      * 启动Activity
      *

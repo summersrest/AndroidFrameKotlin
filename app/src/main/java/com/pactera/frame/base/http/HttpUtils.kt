@@ -89,8 +89,8 @@ class HttpUtils private constructor() {
     /**
      * 取消某一个网络请求
      */
-    fun cancelTag(tag: String) {
+    fun cancelTag(any: Any?) {
         //取消所有请求
-        OkGo.getInstance().cancelTag(tag)
+        OkGo.getInstance().cancelTag(any)
     }
 }

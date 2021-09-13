@@ -14,7 +14,7 @@ import com.sum.multiple.MultipleStatusView
  * Desc: 基类
  */
 abstract class BaseMvpFragment<V : ViewBinding, P : BasePresenter<*, *>> : BaseFragment<V>(), BaseView{
-    protected var presenter: P? = null
+    protected lateinit var presenter: P
 
     abstract fun createPresenter(): P
 
