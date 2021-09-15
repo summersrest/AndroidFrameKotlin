@@ -34,5 +34,4 @@ Adapter
 
 8、[SimpleRecyclerView](https://github.com/summersrest/simple_recycler_view)
 
-# author
-By **BG9_PTJ_IND_Dev_WF**
+
