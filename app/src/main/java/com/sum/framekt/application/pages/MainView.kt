@@ -8,4 +8,5 @@ import com.sum.framekt.base.mvp.BaseView
  * Desc:
  */
 interface MainView : BaseView {
+    fun loginSuccess()
 }

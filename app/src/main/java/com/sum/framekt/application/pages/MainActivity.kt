@@ -1,11 +1,12 @@
 package com.sum.framekt.application.pages
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
+
+import com.sum.framekt.application.pages.user_list.activity.UserListActivity
+import com.sum.framekt.application.pojo.User
 import com.sum.framekt.base.activity.BaseMvpActivity
 import com.sum.framekt.base.utils.ActivityUtils
-import com.sum.framekt.base.utils.Log
 import com.sum.framekt.base.utils.isEmpty
 import com.sum.framekt.databinding.ActivityMainBinding
 
@@ -15,18 +16,21 @@ class MainActivity : BaseMvpActivity<ActivityMainBinding, MainPresenter>(), Main
     override fun getBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
     override fun initView(savedInstanceState: Bundle?) {
-        viewBinding.btnSend.setOnClickListener(this )
+        viewBinding.btnLogin.setOnClickListener(this@MainActivity)
     }
 
     override fun onClickEvent(v: View?) {
-        super.onClickEvent(v)
-        when (v) {
-            viewBinding.btnSend -> {
-                viewBinding.etUserName.isEmpty("用户名为空") ?: return
+        when(v) {
+            viewBinding.btnLogin-> {
+                val userName = viewBinding.etUserName.isEmpty("请输入用户名") ?: return
+                val password = viewBinding.etPassword.isEmpty("请输入密码") ?: return
+                presenter?.login(userName, password)
 
-                Log.showD("流程完成")
             }
         }
     }
 
+    override fun loginSuccess() {
+        ActivityUtils.startActivityAndFinish(this@MainActivity, UserListActivity::class.java)
+    }
 }

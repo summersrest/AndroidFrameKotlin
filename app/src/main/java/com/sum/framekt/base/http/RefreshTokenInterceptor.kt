@@ -1,8 +1,8 @@
 package com.sum.framekt.base.http
 
 import android.text.TextUtils
-import com.alibaba.fastjson.JSON
-import com.alibaba.fastjson.TypeReference
+//import com.alibaba.fastjson.JSON
+//import com.alibaba.fastjson.TypeReference
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor
 import com.lzy.okgo.utils.IOUtils

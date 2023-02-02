@@ -1,6 +1,6 @@
 package com.sum.framekt.base.http
 
-import com.alibaba.fastjson.JSON
+import com.alibaba.fastjson2.toJSONString
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.callback.AbsCallback
 import com.lzy.okgo.request.GetRequest
@@ -76,7 +76,8 @@ class OkGoRequest {
                 }
             }
         }
-        body?.let { post.upJson(JSON.toJSONString(it)) }
+        body?.let { post.upJson(it.toJSONString()) }
+//        body?.let { post.upJson(JSON.toJSONString(it)) }
         post.execute(jsonCallback)
     }
 }

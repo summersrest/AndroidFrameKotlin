@@ -3,8 +3,7 @@ package com.sum.framekt.base.utils
 import android.widget.EditText
 
 /**
- * @author  LiuJiang
- * Desc:    扩展
+ * EditText判空
  */
 fun EditText.isEmpty(msg: String?): String? {
     val text = text.toString()
@@ -13,4 +12,11 @@ fun EditText.isEmpty(msg: String?): String? {
         return null
     }
     return text
+}
+
+/**
+ * EditText取值
+ */
+fun EditText.getContent(): String {
+    return this.text.toString()
 }
