@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".application.App"
         android:allowBackup="true"
@@ -14,9 +14,7 @@
         android:theme="@style/Base.Theme"
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="31">
-        <activity
-            android:name=".application.pages.user_list.activity.UserListActivity"
-            android:exported="false" />
+
         <activity
             android:name=".application.pages.MainActivity"
             android:exported="true"

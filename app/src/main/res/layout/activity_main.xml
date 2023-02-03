@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="to"
+        android:text="tom"
         android:hint="用户名" />
 
     <EditText
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="12"
+        android:text="123"
         android:hint="密码" />
 
     <Button

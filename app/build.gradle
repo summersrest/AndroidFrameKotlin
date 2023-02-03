@@ -76,6 +76,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation files('libs/commons-codec-1.4.jar')
     implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:+'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -93,7 +94,7 @@ dependencies {
     //多状态View
     implementation 'com.github.summersrest:MultipleStatusView:v1.0.0'
     //adapter封装
-    implementation 'com.github.summersrest:SimpleAdapter:v1.0.2'
+    implementation 'com.github.summersrest:SimpleAdapter:v1.0.9'
     //titleBar
     implementation 'com.github.summersrest:TitleBar:v1.0.5'
     //rxjava

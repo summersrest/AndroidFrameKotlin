@@ -16,37 +16,37 @@ class HttpUtils {
     private var tag: Any? = null
     private var url: String = ""
 
-    fun setParameter(key: String, value: String?): HttpUtils {
-        parameter[key] = value
-        return this
-    }
+//    fun setParameter(key: String, value: String?): HttpUtils {
+//        parameter[key] = value
+//        return this
+//    }
+//
+//    fun setParameter(key: String, value: Float?): HttpUtils {
+//        parameter[key] = value
+//        return this
+//    }
+//
+//    fun setParameter(key: String, value: Double?): HttpUtils {
+//        parameter[key] = value
+//        return this
+//    }
+//
+//    fun setParameter(key: String, value: Long?): HttpUtils {
+//        parameter[key] = value
+//        return this
+//    }
+//
+//    fun setParameter(key: String, value: Boolean?): HttpUtils {
+//        parameter[key] = value
+//        return this
+//    }
+//
+//    fun setParameter(key: String, value: File?): HttpUtils {
+//        parameter[key] = value
+//        return this
+//    }
 
-    fun setParameter(key: String, value: Int?): HttpUtils {
-        parameter[key] = value
-        return this
-    }
-
-    fun setParameter(key: String, value: Float?): HttpUtils {
-        parameter[key] = value
-        return this
-    }
-
-    fun setParameter(key: String, value: Double?): HttpUtils {
-        parameter[key] = value
-        return this
-    }
-
-    fun setParameter(key: String, value: Long?): HttpUtils {
-        parameter[key] = value
-        return this
-    }
-
-    fun setParameter(key: String, value: Boolean?): HttpUtils {
-        parameter[key] = value
-        return this
-    }
-
-    fun setParameter(key: String, value: File?): HttpUtils {
+    fun setParameter(key: String, value: Any?): HttpUtils {
         parameter[key] = value
         return this
     }

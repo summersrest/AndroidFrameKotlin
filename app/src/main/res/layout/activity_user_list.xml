@@ -13,10 +13,24 @@
         android:layout_height="wrap_content"
         app:tb_title="用户列表" />
 
-    <com.sum.multiple.MultipleStatusView
-        android:id="@+id/mu_view"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/smart_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:srlEnableAutoLoadMore="true"
+        app:srlEnableLoadMore="true"
+        app:srlEnableRefresh="true">
 
-    </com.sum.multiple.MultipleStatusView>
+        <com.sum.multiple.MultipleStatusView
+            android:id="@+id/mu_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.sum.simple.SimpleRecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.sum.multiple.MultipleStatusView>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </LinearLayout>

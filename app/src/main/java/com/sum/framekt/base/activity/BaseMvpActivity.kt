@@ -1,6 +1,5 @@
 package com.sum.framekt.base.activity
 
-import android.os.Bundle
 import androidx.viewbinding.ViewBinding
 import com.sum.framekt.base.http.HttpUtils
 import com.sum.framekt.base.mvp.BasePresenter
@@ -20,7 +19,7 @@ abstract class BaseMvpActivity<V : ViewBinding, P : BasePresenter<*, *>> : BaseA
     /**
      * 获取MultipleStatusView
      */
-    protected fun getMultipleStatusView(): MultipleStatusView? = null
+    open fun getMultipleStatusView(): MultipleStatusView? = null
 
     /**
      * 显示toast
