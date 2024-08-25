@@ -13,11 +13,3 @@
 .externalNativeBuild
 .cxx
 local.properties
-.idea
-.release
-app/release
-/gradle/wrapper/gradle-wrapper.jar
-/gradle/wrapper/gradle-wrapper.properties
-.json
-.apk
-*.txt
