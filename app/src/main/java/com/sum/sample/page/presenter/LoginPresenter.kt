@@ -17,7 +17,7 @@ import com.sum.sample.page.view.LoginView
  */
 class LoginPresenter(tag: Any?, view: LoginView) : BasePresenter<LoginModel, LoginView>(tag, view) {
 
-    override fun createMode(): LoginModel = LoginModel(tag)
+    override fun createModel(): LoginModel = LoginModel(tag)
 
     fun login(etUser: EditText, etPwd: EditText) {
         etUser.isEmpty("请输入用户名") ?: return

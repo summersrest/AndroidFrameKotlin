@@ -51,11 +51,10 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(project(":frame"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
+    implementation(project(":frame"))
     //okhttp
     implementation(platform(libs.ok.http))
     implementation("com.squareup.okhttp3:okhttp")

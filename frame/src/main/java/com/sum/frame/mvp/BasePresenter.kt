@@ -5,9 +5,9 @@ package com.sum.frame.mvp
  * Desc:
  */
 abstract class BasePresenter<M : BaseModel, V : BaseView>(var tag: Any?, var view: V?) {
-    protected var model: M? = lazy(LazyThreadSafetyMode.SYNCHRONIZED) { createMode() }.value
+    protected var model: M? = lazy(LazyThreadSafetyMode.SYNCHRONIZED) { createModel() }.value
 
-    abstract fun createMode(): M
+    abstract fun createModel(): M
 
 
     /**

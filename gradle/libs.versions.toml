@@ -5,7 +5,7 @@ targetSdk = "33"
 versionCode = "1"
 versionName = "1.0"
 
-agp = "8.5.0"
+agp = "8.5.2"
 kotlin = "2.0.20"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -13,7 +13,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-#base库版本号
+#Frame中导入的依赖库的版本号
 #OkHttp
 okhttp = "4.12.0"
 #rx
@@ -30,7 +30,6 @@ multiplestatusview = "v1.0.0"
 ##fastjson2Kotlin
 fastjson2Kotlin = "2.0.52"
 
-
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -38,7 +37,7 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-#base库版本号
+#Frame中导入的依赖库的版本号
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 fastjson2-kotlin = { module = "com.alibaba.fastjson2:fastjson2-kotlin", version.ref = "fastjson2Kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
@@ -50,10 +49,7 @@ eventbus = {group = "org.greenrobot", name = "eventbus", version.ref = "eventBus
 glide = {group = "com.github.bumptech.glide", name = "glide", version.ref = "glide"}
 xpopup = {group = "com.github.li-xiaojun", name = "XPopup", version.ref = "xpopup"}
 
-
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-
