@@ -3,6 +3,8 @@ package com.sum.frame.http
 import com.alibaba.fastjson2.JSON
 import com.sum.frame.entity.HttpException
 import com.sum.frame.http.callback.OriginCallback
+import com.sum.frame.mvp.BaseActivity
+import com.sum.frame.mvp.BaseFragment
 import com.sum.frame.utils.L
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
@@ -27,7 +29,7 @@ class HttpUtils {
     /**
      * OkHttpClient
      */
-    private var clent: OkHttpClient? = null
+    private var client: OkHttpClient? = null
 
     /**
      * Parameter参数
@@ -196,7 +198,7 @@ class HttpUtils {
                         ).setLevel(HttpLoggingInterceptor.Level.BODY)
                 )
             }
-            clent = builder.build()
+            client = builder.build()
         } ?: throw Exception("请在Application中调用HttpUtils.builder().build()完成初始化")
         return this
     }
@@ -245,17 +247,11 @@ class HttpUtils {
         url = ""
     }
 
-    /**
-     * 设置公共参数
-     */
-    private fun setCommonParameter() {
-    }
 
     /**
      * Get请求
      */
     fun <T> get(callback: OriginCallback<T>) {
-        setCommonParameter()
         val request: Request = Request.Builder()
             .get()
             .tag(tag)
@@ -266,10 +262,22 @@ class HttpUtils {
     }
 
     /**
+     * Get同步请求
+     */
+    fun getSync(): Response? {
+        val request: Request = Request.Builder()
+            .get()
+            .tag(tag)
+            .url(joinUrl())
+            .build()
+        clear()
+        return client?.newCall(request)?.execute()
+    }
+
+    /**
      * Post请求
      */
     fun <T> post(callback: OriginCallback<T>) {
-        setCommonParameter()
         val request: Request = Request.Builder()
             .post(JSON.toJSONString(body).toRequestBody("application/json".toMediaType()))
             .url(joinUrl())
@@ -280,17 +288,26 @@ class HttpUtils {
     }
 
     /**
+     * Post同步请求
+     */
+    fun postSync(): Response? {
+        val request: Request = Request.Builder()
+            .post(JSON.toJSONString(body).toRequestBody("application/json".toMediaType()))
+            .url(joinUrl())
+            .tag(tag)
+            .build()
+        clear()
+        return client?.newCall(request)?.execute()
+    }
+
+    /**
      * 请求
      */
     private fun <T> goRequest(request: Request, callback: OriginCallback<T>) {
-        clent?.let {
+        client?.let {
             Observable.create { emitter ->
-                try {
-                    val resp: Response = it.newCall(request).execute()
-                    emitter.onNext(resp)
-                } catch (exception: IOException) {
-                    emitter.onError(exception)
-                }
+                val resp: Response = it.newCall(request).execute()
+                emitter.onNext(resp)
             }
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -298,7 +315,12 @@ class HttpUtils {
                     override fun onSubscribe(d: Disposable) {}
 
                     override fun onError(e: Throwable) {
-                        callback.onFail(HttpException(-1, e.message))
+                        if (e is HttpException) {
+                            callback.onFail(e)
+                        } else {
+                            callback.onFail(HttpException(-1, e.message))
+                        }
+
                     }
 
                     override fun onComplete() {}
@@ -314,7 +336,7 @@ class HttpUtils {
      * 取消网络请求
      */
     fun cancelAll() {
-        clent?.dispatcher?.cancelAll()
+        client?.dispatcher?.cancelAll()
     }
 
     /**
@@ -323,8 +345,8 @@ class HttpUtils {
      * @param tag
      */
     fun cancelByTag(tag: Any) {
-        if (null != clent) {
-            for (call in clent!!.dispatcher.runningCalls()) {
+        if (null != client) {
+            for (call in client!!.dispatcher.runningCalls()) {
                 if (null != call.request().tag() && call.request().tag() == tag) {
                     call.cancel()
                 }

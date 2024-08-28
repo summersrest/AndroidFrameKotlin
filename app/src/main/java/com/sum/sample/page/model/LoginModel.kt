@@ -1,6 +1,7 @@
 package com.sum.sample.page.model
 
 import com.sum.frame.mvp.BaseModel
+import com.sum.sample.entity.ArticleEntity
 import com.sum.sample.entity.UserInfoEntity
 import com.sum.sample.http.JsonCallback
 
@@ -17,5 +18,13 @@ class LoginModel(tag: Any?) : BaseModel(tag) {
             .url("/login")
             .body(map)
             .post(jsonCallback)
+    }
+
+    fun getList(jsonCallback: JsonCallback<List<ArticleEntity>>) {
+        httpUtils
+            .tag(tag)
+            .url("/list")
+            .param("userId", 1)
+            .get(jsonCallback)
     }
 }

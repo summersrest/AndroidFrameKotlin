@@ -89,7 +89,7 @@ abstract class BaseFragment<V : ViewBinding> : Fragment(), View.OnClickListener 
     /**
      * 弹出全屏进度条
      */
-    protected fun showDialog(msg: String? = "加载中，请稍候…") {
+    fun showDialog(msg: String? = "加载中，请稍候…") {
         loadDialog?.show() ?: run {
             loadDialog = XPopup.Builder(context)
                 .dismissOnBackPressed(false)
@@ -103,7 +103,7 @@ abstract class BaseFragment<V : ViewBinding> : Fragment(), View.OnClickListener 
     /**
      * 更新进度条弹窗文字
      */
-    protected fun updateDialog(msg: String?) {
+    fun updateDialog(msg: String?) {
         if (!TextUtils.isEmpty(msg)) {
             loadDialog?.setTitle(msg)
         }
@@ -112,9 +112,11 @@ abstract class BaseFragment<V : ViewBinding> : Fragment(), View.OnClickListener 
     /**
      * 隐藏进度条
      */
-    protected fun hideDialog(msg: String? = null) {
+    fun hideDialog(msg: String? = null) {
         ToastUtils.show(msg)
-        loadDialog?.dismiss() ?: kotlin.run { loadDialog = null }
+        if (loadDialog?.isDismiss == false) {
+            loadDialog?.dismiss() ?: kotlin.run { loadDialog = null }
+        }
     }
 
     override fun onStart() {
@@ -126,6 +128,7 @@ abstract class BaseFragment<V : ViewBinding> : Fragment(), View.OnClickListener 
 
     override fun onDestroy() {
         super.onDestroy()
+        hideDialog()
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this)
         }

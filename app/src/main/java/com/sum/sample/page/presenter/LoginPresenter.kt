@@ -3,8 +3,12 @@ package com.sum.sample.page.presenter
 import android.widget.EditText
 import com.sum.frame.entity.HttpException
 import com.sum.frame.mvp.BasePresenter
+import com.sum.frame.utils.L
+import com.sum.frame.utils.ToastUtils
 import com.sum.frame.utils.getContent
 import com.sum.frame.utils.isEmpty
+import com.sum.frame.utils.print
+import com.sum.sample.entity.ArticleEntity
 import com.sum.sample.entity.UserInfoEntity
 import com.sum.sample.http.JsonCallback
 import com.sum.sample.page.model.LoginModel
@@ -37,6 +41,18 @@ class LoginPresenter(tag: Any?, view: LoginView) : BasePresenter<LoginModel, Log
                 view?.hideProgressDialog(e.message)
             }
 
+        })
+    }
+
+    fun getList() {
+        model?.getList(object : JsonCallback<List<ArticleEntity>>() {
+            override fun onSuccess(entity: List<ArticleEntity>?) {
+                "请求成功".print()
+            }
+
+            override fun onFail(e: HttpException) {
+                ToastUtils.show("请求失败，错误码：${e.code}，错误信息：${e.msg}")
+            }
         })
     }
 }

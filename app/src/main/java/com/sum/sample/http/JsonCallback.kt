@@ -3,6 +3,7 @@ package com.sum.sample.http
 import com.alibaba.fastjson2.*
 import com.sum.frame.entity.HttpException
 import com.sum.frame.http.callback.OriginCallback
+import com.sum.frame.utils.print
 import com.sum.sample.entity.BaseEntity
 import okhttp3.Response
 import java.lang.reflect.ParameterizedType
@@ -55,4 +56,5 @@ abstract class JsonCallback<T> : OriginCallback<T> {
             )
         }
     }
+
 }

@@ -48,3 +48,33 @@ fun Int.getString(): String = ContextCompat.getString(context, this)
  * 从Res获取色值
  */
 fun Int.getColor(): Int = ContextCompat.getColor(context, this)
+
+/**
+ * 打印
+ */
+fun String?.print() = L.showD(this)
+
+/**
+ * 打印
+ */
+fun Int?.print() = L.showD(this.toString())
+
+/**
+ * 打印
+ */
+fun Float?.print() = L.showD(this.toString())
+
+/**
+ * 打印
+ */
+fun Long?.print() = L.showD(this.toString())
+
+/**
+ * 打印
+ */
+fun Double?.print() = L.showD(this.toString())
+
+/**
+ * 打印
+ */
+fun Boolean?.print() = L.showD(this.toString())

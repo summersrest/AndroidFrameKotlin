@@ -83,7 +83,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity(), View.OnClick
     /**
      * 弹出全屏进度条
      */
-    protected fun showDialog(msg: String? = "加载中，请稍候…") {
+    fun showDialog(msg: String? = "加载中，请稍候…") {
         loadDialog?.show() ?: run {
             loadDialog = XPopup.Builder(context)
                 .dismissOnBackPressed(false)
@@ -97,7 +97,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity(), View.OnClick
     /**
      * 更新进度条弹窗文字
      */
-    protected fun updateDialog(msg: String?) {
+    fun updateDialog(msg: String?) {
         if (!TextUtils.isEmpty(msg)) {
             loadDialog?.setTitle(msg)
         }
@@ -106,9 +106,11 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity(), View.OnClick
     /**
      * 隐藏进度条
      */
-    protected fun hideDialog(msg: String? = null) {
+    fun hideDialog(msg: String? = null) {
         ToastUtils.show(msg)
-        loadDialog?.dismiss() ?: kotlin.run { loadDialog = null }
+        if (loadDialog?.isDismiss == false) {
+            loadDialog?.dismiss() ?: kotlin.run { loadDialog = null }
+        }
     }
 
     /**
@@ -155,6 +157,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity(), View.OnClick
 
     override fun onDestroy() {
         super.onDestroy()
+        hideDialog()
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this)
         }

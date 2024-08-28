@@ -19,7 +19,7 @@ class SpUtils private constructor() {
          * 设置boolean类型的全局参数
          */
         @JvmStatic
-        fun setBoolean(key: String, value: Boolean) {
+        fun putBoolean(key: String, value: Boolean) {
             val sp: SharedPreferences = context.getSharedPreferences(FILE_NAME, MODE_PRIVATE)
             sp.edit().putBoolean(key, value).apply()
         }
@@ -37,7 +37,7 @@ class SpUtils private constructor() {
          * 设置int类型的全局参数
          */
         @JvmStatic
-        fun setInt(key: String, value: Int) {
+        fun putInt(key: String, value: Int) {
             val sp: SharedPreferences = context.getSharedPreferences(FILE_NAME, MODE_PRIVATE)
             sp.edit().putInt(key, value).apply()
         }
@@ -55,7 +55,7 @@ class SpUtils private constructor() {
          * 设置String类型的全局参数
          */
         @JvmStatic
-        fun setString(key: String, value: String) {
+        fun putString(key: String, value: String) {
             val sp = context.getSharedPreferences(FILE_NAME, MODE_PRIVATE)
             sp.edit().putString(key, value).apply()
         }
@@ -73,7 +73,7 @@ class SpUtils private constructor() {
          * 设置float类型的全局参数
          */
         @JvmStatic
-        fun setFloat(key: String, value: Float) {
+        fun putFloat(key: String, value: Float) {
             val sp = context.getSharedPreferences(FILE_NAME, MODE_PRIVATE)
             sp.edit().putFloat(key, value).apply()
         }
@@ -91,7 +91,7 @@ class SpUtils private constructor() {
          * 设置long类型的全局参数
          */
         @JvmStatic
-        fun setLong(key: String, value: Long) {
+        fun putLong(key: String, value: Long) {
             val sp = context.getSharedPreferences(FILE_NAME, MODE_PRIVATE)
             sp.edit().putLong(key, value).apply()
         }
@@ -106,10 +106,26 @@ class SpUtils private constructor() {
         }
 
         /**
+         * 根据Key值移除
+         */
+        fun remove(key: String) {
+            val sp = context.getSharedPreferences(FILE_NAME, MODE_PRIVATE)
+            sp.edit().remove(key).apply()
+        }
+
+        /**
+         * 清空
+         */
+        fun clear() {
+            val sp = context.getSharedPreferences(FILE_NAME, MODE_PRIVATE)
+            sp.edit().clear().apply()
+        }
+
+        /**
          *存储复杂对象
          */
         @JvmStatic
-        fun <T> setObject(obj: T, key: String) {
+        fun <T> putObject(obj: T, key: String) {
             // 创建字节输出流
             val os = ByteArrayOutputStream()
             try {
