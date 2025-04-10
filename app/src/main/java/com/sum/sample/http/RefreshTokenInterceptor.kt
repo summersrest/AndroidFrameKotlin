@@ -1,14 +1,12 @@
 package com.sum.sample.http
 
 import android.content.Intent
-import androidx.fragment.app.Fragment
 import com.sum.frame.SFrame
 import com.sum.frame.entity.HttpException
 import com.sum.frame.http.HttpUtils
 import com.sum.frame.mvp.BaseActivity
 import com.sum.frame.mvp.BaseFragment
 import com.sum.frame.utils.SpUtils
-import com.sum.frame.utils.print
 import com.sum.sample.base.Constant
 import com.sum.sample.page.activity.LoginActivity
 import okhttp3.Interceptor

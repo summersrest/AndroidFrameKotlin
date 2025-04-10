@@ -34,7 +34,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity(), View.OnClick
 
     protected lateinit var context: Context
 
-    protected lateinit var activity: AppCompatActivity
+    private lateinit var activity: AppCompatActivity
 
     protected abstract fun initView(savedInstanceState: Bundle?)
 
